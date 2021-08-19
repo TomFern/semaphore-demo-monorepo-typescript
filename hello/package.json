@@ -1,0 +1,9 @@
+{
+  "main": "dist/main",
+  "types": "dist/main",
+  "name": "hello",
+  "version": "1.0.0",
+  "dependencies": {
+    "shared": "1.0.0"
+  }
+}
