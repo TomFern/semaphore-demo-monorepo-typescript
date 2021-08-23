@@ -138,6 +138,12 @@ Per project actions:
 - Run ESLint: `yarn workspace <project> lint`
 - Delete compiled files: `yarn workspace <project> clean`
 
+## CI/CD
+
+The demo includes a ready-to-work, change-based pipeline in the `final` branch.
+
+![](./public/pipeline.png)
+
 ## License
 
 MIT License
