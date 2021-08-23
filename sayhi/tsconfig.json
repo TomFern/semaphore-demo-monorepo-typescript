@@ -10,7 +10,12 @@
     "forceConsistentCasingInFileNames": true        /* Disallow inconsistently-cased references to the same file. */
   },
   "exclude": [
-    "tests/**",
-    "dist/**"
+      "dist/**",
+      "tests/**"
+  ],
+  "references": [
+    {
+      "path": "../shared"
+    }
   ]
 }

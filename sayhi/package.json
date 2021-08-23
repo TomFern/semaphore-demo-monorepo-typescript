@@ -1,14 +1,18 @@
 {
-  "name": "shared",
+  "name": "sayhi",
   "packageManager": "yarn@3.0.1",
   "version": "1.0.0",
-  "main": "dist/src/hi",
-  "types": "dist/src/hi",
+  "main": "dist/src/sayhi",
+  "types": "dist/src/sayhi",
   "scripts": {
-    "build": "tsc",
+    "start": "node dist/src/sayhi.js",
     "lint": "eslint src/*.ts",
+    "build": "tsc",
     "test": "jest",
     "clean": "rm -r dist/*"
+  },
+  "dependencies": {
+    "shared": "1.0.0"
   },
   "devDependencies": {
     "@types/jest": "^27.0.1",
