@@ -1,0 +1,63 @@
+version: v1.0
+name: Initial Pipeline
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: Build sayhi
+    task:
+      jobs:
+        - name: Build
+          commands:
+            - sem-version node 14.17.3
+            - checkout
+            - yarn workspace sayhi build
+    dependencies: []
+    run:
+      when: change_in('/packages/sayhi')
+  - name: Test sayhi
+    task:
+      jobs:
+        - name: Lint
+          commands:
+            - yarn workspace sayhi lint
+        - name: Unit tests
+          commands:
+            - yarn workspace sayhi test
+      prologue:
+        commands:
+          - sem-version node 14.17.3
+          - checkout
+    dependencies:
+      - Build sayhi
+    run:
+      when: change_in('/packages/sayhi')
+  - name: Build shared
+    dependencies: []
+    task:
+      jobs:
+        - name: Build
+          commands:
+            - sem-version node 14.17.3
+            - checkout
+            - yarn workspace shared build
+    run:
+      when: change_in('/packages/shared')
+  - name: Tests shared
+    dependencies:
+      - Build shared
+    task:
+      prologue:
+        commands:
+          - sem-version node 14.17.3
+          - checkout
+      jobs:
+        - name: Lint
+          commands:
+            - yarn workspace shared lint
+        - name: Unit tests
+          commands:
+            - yarn workspace shared test
+    run:
+      when: change_in('/packages/shared')
