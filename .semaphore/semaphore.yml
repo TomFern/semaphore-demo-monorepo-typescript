@@ -31,8 +31,9 @@ blocks:
           - checkout
     dependencies:
       - Build sayhi
+      - Build shared
     run:
-      when: change_in('/packages/sayhi')
+      when: 'change_in([''/packages/sayhi'', ''/packages/shared''])'
   - name: Build shared
     dependencies: []
     task:
