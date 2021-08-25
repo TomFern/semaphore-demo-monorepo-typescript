@@ -15,7 +15,7 @@ blocks:
             - yarn workspace sayhi build
     dependencies: []
     run:
-      when: change_in('/packages/sayhi')
+      when: 'change_in(''/packages/sayhi'', {default_branch: ''final''})'
   - name: Test sayhi
     task:
       jobs:
@@ -33,7 +33,7 @@ blocks:
       - Build sayhi
       - Build shared
     run:
-      when: 'change_in([''/packages/sayhi'', ''/packages/shared''])'
+      when: 'change_in([''/packages/sayhi'', ''/packages/shared''], {default_branch: ''final''})'
   - name: Build shared
     dependencies: []
     task:
@@ -44,7 +44,7 @@ blocks:
             - checkout
             - yarn workspace shared build
     run:
-      when: change_in('/packages/shared')
+      when: 'change_in(''/packages/shared'', {default_branch: ''final''})'
   - name: Tests shared
     dependencies:
       - Build shared
@@ -61,4 +61,4 @@ blocks:
           commands:
             - yarn workspace shared test
     run:
-      when: change_in('/packages/shared')
+      when: 'change_in(''/packages/shared'', {default_branch: ''final''})'
