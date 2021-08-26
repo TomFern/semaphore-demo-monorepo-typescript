@@ -118,6 +118,12 @@ Install and build all dependencies. This adds `.pnp.cjs`, and fills the `.yarn/c
 $ yarn install
 ```
 
+Build everything at once:
+
+``` bash
+$ yarn tsc --build --force
+```
+
 You can build each project separately into its `dist` folders:
 
 ``` bash
